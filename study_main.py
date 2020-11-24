@@ -29,16 +29,16 @@ def timer():
         time.sleep(1)
         time_stop = time.time()
         secend = round(time_stop - time_start)
-        minute0 = secend//60
-        minute = (secend//60)%60
+        minute = secend//60
+        minute_out = (secend//60)%60
         hour = minute//60
         secend = secend%60
-        print('\r你已经学习了：','{:0>2d}:{:0>2d}:{:0>2d}'.format(hour,minute,secend),end='',flush=True)
+        print('\r你已经学习了：','{:0>2d}:{:0>2d}:{:0>2d}'.format(hour,minute_out,secend),end='',flush=True)
         if msvcrt.kbhit():
             if ord(msvcrt.getch()) == 113:
                 print('\n计时结束！\n')
-                print('你的本次学习时间为：{:0>2d}:{:0>2d}:{:0>2d}'.format(hour,minute,secend))
-                return minute0
+                print('你的本次学习时间为：{:0>2d}:{:0>2d}:{:0>2d}'.format(hour,minute_out,secend))
+                return minute
 #显示学习计划
 def show_plan(filename):
     study_part_text = []
