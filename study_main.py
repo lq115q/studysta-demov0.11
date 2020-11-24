@@ -75,13 +75,13 @@ def start_plan():
 def write_file(times,writefilename,study_note):
     times_len = len(times)
     if os.path.exists('tmp.csv'):
-        with open('tmp.csv',encoding='gbk') as obj:
+        with open('tmp.csv',encoding='utf-8') as obj:
             f = csv.reader(obj)
             rows = [row for row in f]
             now_date = time.strftime("%Y-%m-%d", time.localtime())
             if rows[-1][0] == now_date:
                 for i in range(len(rows[-1])-5):
-                    times[i] == (int(rows[-1][5+i]))
+                    times[i] = (int(rows[-1][5+i]))
         print('欢迎回来，今天剩余学习时间为：')
     else:
         print('欢迎开始今天的学习任务，今天的学习剩余时间为：')
@@ -129,7 +129,7 @@ def write_file(times,writefilename,study_note):
             else :
                 print('模块{}剩余学习时长：'.format(i) + str(times[i]) +' min')
                 flag += 1
-        with open('tmp.csv','a',encoding='gbk') as file_write:
+        with open('tmp.csv','a',encoding='utf-8') as file_write:
             file_write.write((time.strftime("%Y-%m-%d,%H:%M:%S", time.localtime())))
             file_write.write(','+str(study_part)+','+str(study_time)+','+text_note)
             file_write.write(''.join([(','+str(time_item)) for time_item in times]))
